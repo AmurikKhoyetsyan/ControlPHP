@@ -95,6 +95,6 @@ If `composer install` or `composer update` does not work, write `composer dumb-a
     create($data)
     where($condition) // $this->model->where(['last_name', '=', 'test'])->get(['id', 'name', 'last_name'])
     rightJoin($columns, $relationTable, $condition, $where)
-    pagination($limit $order, $columns, $option)
+    pagination($limit, $order, $columns, $option)
     update($id, $request)
     delete($id)
