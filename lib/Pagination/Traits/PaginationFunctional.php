@@ -26,7 +26,7 @@ trait PaginationFunctional
     /**
      * @var int
      */
-    protected $limit = 20;
+    protected $perPage = 20;
 
     /**
      * @var float|int
@@ -92,22 +92,22 @@ trait PaginationFunctional
      * @param string[] $columns
      * @param string $order
      * @param int $page
-     * @param int $limit
+     * @param int $perPage
      * @param string $option
      * @return array
      */
-    public function getPagination($table = '', $columns = ['*'], $order = 'ASC', $page = 1, $limit = 10, $option = "")
+    public function getPagination($table = '', $columns = ['*'], $order = 'ASC', $page = 1, $perPage = 10, $option = "")
     {
         $this->table = $table;
-        $this->limit = $limit;
+        $this->perPage = $perPage;
         $this->option = $option;
-        $this->page = (($page * $limit) - $limit);
+        $this->page = (($page * $perPage) - $perPage);
 
         $this->getPages();
 
         $content = $this->getContent($columns);
 
-        $sql = "SELECT $content FROM `$this->table` $this->option ORDER BY id $order LIMIT $this->limit OFFSET $this->page";
+        $sql = "SELECT $content FROM `$this->table` $this->option ORDER BY id $order LIMIT $this->perPage OFFSET $this->page";
 
         $query = mysqli_query(self::$connection, $sql);
 
