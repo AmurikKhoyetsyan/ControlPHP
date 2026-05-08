@@ -42,7 +42,7 @@ class Pagination extends DB
     {
         $this->numElements = $this->getNum();
 
-        $this->count = ceil($this->numElements / $this->limit);
+        $this->count = ceil($this->numElements / $this->perPage);
         $this->pages = range(1, $this->count);
     }
 
@@ -114,7 +114,7 @@ class Pagination extends DB
      */
     public function show()
     {
-        return $this->numElements > $this->limit;
+        return $this->numElements > $this->perPage;
     }
 
     /**
